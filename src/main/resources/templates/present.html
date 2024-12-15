@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+
+  <title>Present</title>
+</head>
+<body>
+<nav>
+  <ul>
+    <li>
+      <a th:href="@{/}">Home</a>
+    </li>
+    <li>
+      <a th:href="@{/byDate}">Find attendance by date</a>
+    </li>
+  </ul>
+</nav>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Is present</th>
+    <th>Worked hours</th>
+    <th>Date</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="attendance : ${attendances}">
+    <td th:text="${attendance.getName()}"></td>
+    <td th:text="${attendance.isPresent()}"></td>
+    <td th:text="${attendance.getWorkedHours()}"></td>
+    <td th:text="${attendance.getDate()}"></td>
+
+    <td>
+      <!--                <a th:href="|/bird-details/${bird.id}|">View details</a>-->
+      <a th:href="@{/attend-detail/{attendance}(attendance=${attendance.id})}">View details</a>
+    </td>
+
+  </tr>
+
+  </tbody>
+</table>
+</body>
+</html>

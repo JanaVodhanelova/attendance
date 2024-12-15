@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <title>Attendance</title>
+</head>
+<body>
+<header>
+    <h1 th:text="${welcomeString}">Attendance table</h1>
+    <nav>
+        <ul>
+            <li>
+                <a th:href="@{/}">Home</a>
+            </li>
+            <li>
+                <a th:href="@{/present}">Find all present employ</a>
+            </li>
+            <li>
+                <a th:href="@{/attend-by-date}">Find attendance by date</a>
+            </li>
+            <li>
+                <a href="/add-attendance" th:href="@{/add-attendance}">Add new present</a>
+            </li>
+        </ul>
+    </nav>
+    <h5>Search</h5>
+    <form th:action="@{/}" method="get">
+        <input type="text" name="search">
+        <button type="submit">Search</button>
+    </form>
+</header>
+<main>
+
+    <table>
+        <thead>
+        <tr>
+           <!-- <th>Name</th> -->
+            <th>Date</th>
+            <th>Is present</th>
+            <th>Worked hours</th>
+            <th>Details</th>
+            <th>Delete attendance</th>
+            <th>Edit</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="attendance : ${attendances}">
+            <!-- <td th:text="${attendance.getName()}"></td> -->
+            <td th:text="${attendance.getDate()}"></td>
+            <td th:text="${attendance.isPresent()}"></td>
+            <td th:text="${attendance.getWorkedHours()}"></td>
+
+            <td>
+                <!--                <a th:href="|/bird-details/${bird.id}|">View details</a>-->
+                <a th:href="@{/attend-detail/{attendance}(attendance=${attendance.id})}">View details</a>
+            </td>
+            <td>
+                <form method="get" th:action="@{/delete/{id} (id = ${attendance.id})}">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+            <td>
+                <form method="get" th:action="@{/edit-attendance/{id} (id = ${attendance.id})}">
+                    <button type="submit">Edit</button>
+                </form>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</main>
+
+</body>
+</html>
