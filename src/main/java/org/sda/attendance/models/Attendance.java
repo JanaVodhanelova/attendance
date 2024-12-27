@@ -43,6 +43,10 @@ public class Attendance extends BaseEntity{
         this.employee = employee;
     }
 
+    public Employee getEmployee() {
+        return employee;
+    }
+
     public Attendance() {
     }
 

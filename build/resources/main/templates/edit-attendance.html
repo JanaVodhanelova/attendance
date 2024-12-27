@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <title>Edit</title>
+</head>
+<body>
+<main>
+    <h1 th:text="${attendance.name}"></h1>
+    <ul>
+        <li th:text="${attendance.id}"></li>
+        <li th:text="${attendance.isPresent}"></li>
+        <li th:text="${attendance.workedHours}"></li>
+        <li th:text="${attendance.date}"></li>
+    </ul>
+    <form th:action="@{/edit-attendance/{id} (id = ${attendance.id})}" method="post">
+        <div>
+            <label for="name">Name: </label>
+            <input id="name" type="text" name="name" th:value="${attendance.name}">
+        </div>
+        <div>
+            <label for="isPresent">is present: </label>
+            <input id="isPresent" type="checkbox" th:checked="${attendance.isPresent}" name="isPresent" >
+        </div>
+        <div>
+            <label for="workedHours">workedHours: </label>
+            <input id="workedHours" type="number" step=".01" name="workedHours" min="0" max="24" th:value="${attendance.workedHours}" >
+        </div>
+        <div>
+            <label for="date">Date: </label>
+            <input id="date" type="date-local" name="date" th:value="${attendance.date}">
+        </div>
+        <button type="submit">Save</button>
+    </form>
+</main>
+</body>
+</html>
