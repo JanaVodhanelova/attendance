@@ -1,6 +1,7 @@
 package org.sda.attendance.services;
 
 import org.sda.attendance.models.Attendance;
+import org.sda.attendance.models.Employee;
 
 import java.util.List;
 
@@ -24,6 +25,9 @@ public interface AttendService {
 
     List<Attendance> getAttendanceByDate(String date);
 
-//    List<Attendance> getAttendanceByName(String name);
+    List<Attendance> getAttendanceByEmployee(String search);
 
+    List<Attendance> getAllSorted(String parameter);
+
+//    List<Attendance> getAttendanceByName(String lastName);
 }

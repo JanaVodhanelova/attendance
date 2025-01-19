@@ -1,8 +1,10 @@
 package org.sda.attendance.services;
 
 import org.sda.attendance.models.Attendance;
+import org.sda.attendance.models.Employee;
 import org.sda.attendance.repositories.AttendRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -73,10 +75,15 @@ public class AttendImpl implements AttendService {
         return attendRepository.findAttendanceByDate(date1);
     }
 
-//    @Override
-//    public List<Attendance> getAttendanceByName(String name) {
-//        return attendRepository.findAttendanceByNameContainsIgnoreCase(name);
-//    }
+    @Override
+    public List<Attendance> getAttendanceByEmployee(String search) {
+        return attendRepository.findAttendancesByEmployee_FirstNameContainsIgnoreCaseOrEmployee_LastNameContainsIgnoreCase(search, search);}
 
+    @Override
+    public List<Attendance> getAllSorted(String parameter) {
+        return attendRepository.findAll(Sort.by(parameter));
+    }
 
 }
+
+

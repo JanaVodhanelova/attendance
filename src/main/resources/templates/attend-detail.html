@@ -7,7 +7,7 @@
 </head>
 <body>
 <main>
-    <h1 th:text="${attendance.name}"></h1>
+    <h1 th:text="${attendance.employee.firstName} + ' ' +${attendance.employee.lastName}"></h1>
     <ul>
         <li th:text="${attendance.id}"></li>
         <li th:text="${attendance.isPresent}"></li>

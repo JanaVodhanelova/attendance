@@ -25,7 +25,7 @@
     </thead>
     <tbody>
     <tr th:each="attendance : ${attendances}">
-        <td th:text="${attendance.getName()}"></td>
+        <td th:text="${attendance.getEmployee().getFirstName()} + ' ' + ${attendance.getEmployee().getLastName()}"></td>
         <td th:text="${attendance.isPresent()}"></td>
         <td th:text="${attendance.getWorkedHours()}"></td>
         <td th:text="${attendance.getDate()}"></td>

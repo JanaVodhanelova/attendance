@@ -55,4 +55,14 @@ public class Employee extends BaseEntity {
     public void setAttendances(List<Attendance> attendances) {
         this.attendances = attendances;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", position='" + position + '\'' +
+
+                '}';
+    }
 }

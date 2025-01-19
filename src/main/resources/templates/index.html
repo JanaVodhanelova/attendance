@@ -14,7 +14,7 @@
                 <a th:href="@{/}">Home</a>
             </li>
             <li>
-                <a th:href="@{/present}">Find all present employ</a>
+                <a th:href="@{/present}">Find all present employee</a>
             </li>
             <li>
                 <a th:href="@{/attend-by-date}">Find attendance by date</a>
@@ -35,10 +35,16 @@
     <table>
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Date</th>
+            <th>
+                <a th:href="@{/(sortBy='employee.lastName')}">Name</a>
+            </th>
+            <th>
+                <a th:href="@{/(sortBy='date')}">Date</a>
+            </th>
             <th>Is present</th>
-            <th>Worked hours</th>
+            <th>
+                <a th:href="@{/(sortBy='workedHours')}">Worked hours</a>
+            </th>
             <th>Details</th>
             <th>Delete attendance</th>
             <th>Edit</th>
@@ -51,9 +57,7 @@
             <td th:text="${attendance.getDate()}"></td>
             <td th:text="${attendance.isPresent()}"></td>
             <td th:text="${attendance.getWorkedHours()}"></td>
-
             <td>
-                <!--                <a th:href="|/bird-details/${bird.id}|">View details</a>-->
                 <a th:href="@{/attend-detail/{attendance}(attendance=${attendance.id})}">View details</a>
             </td>
             <td>

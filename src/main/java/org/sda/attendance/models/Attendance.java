@@ -27,7 +27,6 @@ public class Attendance extends BaseEntity{
     private float workedHours;
 
     public Attendance(String date, boolean isPresent, float workedHours) {
-//        this.name = name;
         this.date = dateFromString(date);
         this.isPresent = isPresent;
         this.workedHours = workedHours;
