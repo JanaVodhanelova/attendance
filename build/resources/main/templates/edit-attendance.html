@@ -7,7 +7,8 @@
 </head>
 <body>
 <main>
-    <h1 th:text="${attendance.name}"></h1>
+    <H1 th:text="${attendance.getEmployee().getFirstName()} + ' ' + ${attendance.getEmployee().getLastName()}"></H1>
+
     <ul>
         <li th:text="${attendance.id}"></li>
         <li th:text="${attendance.isPresent}"></li>
@@ -15,10 +16,11 @@
         <li th:text="${attendance.date}"></li>
     </ul>
     <form th:action="@{/edit-attendance/{id} (id = ${attendance.id})}" method="post">
-        <div>
+       <!-- <div>
             <label for="name">Name: </label>
             <input id="name" type="text" name="name" th:value="${attendance.name}">
         </div>
+        -->
         <div>
             <label for="isPresent">is present: </label>
             <input id="isPresent" type="checkbox" th:checked="${attendance.isPresent}" name="isPresent" >
